@@ -29,7 +29,7 @@ class User(AbstractUser):
     )
     city = models.CharField(
         max_length=250,
-        verbose_name="Country",
+        verbose_name="City",
         **NULLABLE,
     )
 
