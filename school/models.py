@@ -60,6 +60,7 @@ class Lesson(models.Model):
         max_length=256,
         verbose_name="видео",
         help_text="укажите ссылку на видео",
+        **NULLABLE,
     )
     course = models.ForeignKey(
         Course,
