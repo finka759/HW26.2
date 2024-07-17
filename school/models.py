@@ -66,8 +66,8 @@ class Lesson(models.Model):
         Course,
         on_delete=models.CASCADE,
         verbose_name='курс',
-        null=True,
-        blank=True)
+        **NULLABLE,
+    )
     owner = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
