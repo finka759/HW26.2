@@ -5,7 +5,7 @@ from users.models import User, Payment
 
 
 class Command(BaseCommand):
-    """Команда для создания user-ов"""
+    """Команда для заполнения всех данных БД """
 
     def handle(self, *args, **options):
         Payment.objects.all().delete()

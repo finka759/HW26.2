@@ -24,6 +24,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'users',
     'school',
+    'django_filters',
 
 ]
 
@@ -56,6 +57,10 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'config.wsgi.application'
+
+REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
+}
 
 DATABASES = {
     'default': {
