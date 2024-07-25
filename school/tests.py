@@ -103,6 +103,7 @@ class CourseTestCase(APITestCase):
                                'image': None, 'owner': self.user.pk}]}
         self.assertEqual(data, result)
 
+
 class SubscriptionTestCase(APITestCase):
 
     def setUp(self):
