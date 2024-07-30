@@ -86,6 +86,10 @@ class Payment(models.Model):
         verbose_name='идентификатор платежа',
         **NULLABLE
     )
+    summ = models.PositiveIntegerField(
+        verbose_name='сумма платежа',
+        default=100
+    )
 
     def __str__(self):
         return f"{self.user}: ({self.course})"
