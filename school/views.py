@@ -8,7 +8,7 @@ from rest_framework.generics import CreateAPIView, ListAPIView, RetrieveAPIView,
 from school.models import Course, Lesson, Subscription
 from school.paginators import MyPagination
 from school.serializers import CourseSerializer, LessonSerializer, CourseDetailSerializer, SubscriptionSerializer
-
+from school.tasks import privet
 from users.permissions import IsModer, IsOwner
 
 
@@ -34,6 +34,11 @@ class CourseViewSet(ModelViewSet):
         elif self.action == 'destroy':
             self.permission_classes = (~IsModer | IsOwner,)
         return super().get_permissions()
+
+    def perform_update(self, serializer):
+        instance = serializer.save()
+        privet.delay(instance.id)
+        return instance
 
 
 class LessonCreateApiView(CreateAPIView):
@@ -75,7 +80,7 @@ class SubscriptionAPIView(APIView):
     serializer_class = SubscriptionSerializer
     permission_classes = [IsAuthenticated]
 
-    def post(self, request, *args, **kwargs):
+    def post(self, *args, **kwargs):
         user = self.request.user
         course_id = self.request.data.get('course')
         course_item = get_object_or_404(Course, pk=course_id)
