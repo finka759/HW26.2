@@ -135,8 +135,8 @@ CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'
 CELERY_BEAT_SCHEDULE = {
     'check_how_long_ago_logined_user': {
         'task': 'school.tasks.check_how_long_ago_logined_user',  # Путь к задаче
-        'schedule': timedelta(seconds=15),  # Расписание выполнения задачи
-        # 'schedule': timedelta(days=1),  # Расписание выполнения задачи
+        # 'schedule': timedelta(seconds=15),  # Расписание выполнения задачи
+        'schedule': timedelta(days=1),  # Расписание выполнения задачи
     },
 }
 
